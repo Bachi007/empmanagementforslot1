@@ -1,38 +1,23 @@
 package com.slot1jdbc;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+import org.junit.jupiter.api.Test;
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+class AppTest{
+	
+	@Test
+	void testregisterac()throws Exception
+	{
+		bankingcustomer b1=new bankingcustomer();
+		b1.cname="priyanshu";
+		b1.cpassword="123456";
+		b1.cphone="8501003087";
+		b1.caccbal=7000;
+		
+		bankingdao dao=new bankingdao();
+		dao.connect();
+		assertEquals(1,dao.registerCustomer(b1));
+		
+	}
 }
